@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="assets/w3-theme-nebulas-blue.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/sa-todo-style.css">
+	<title>About Todo Task Manager</title>
+</head>
+
+<body>
+	<div class="w3-content" id="page-container">
+		<!-- required to centre everything -->
+
+		<div class="w3-bar w3-theme" id="nav-bar">
+			<a class="w3-button w3-bar-item w3-theme-d1 w3-right" href="./">Home</a>
+		</div>
+		<div class="w3-container w3-large w3-center w3-theme-l3" id="header">
+			<h2 class="w3-wide w3-xxlarge sa-font-serif">Todo Task Manager</h2>
+			<p><i>Manage all you have <em>Todo</em>!</i></p>
+		</div>
+		<div class="w3-center" id="intro">
+			<!-- <span class="fa fa-list-alt w3-jumbo w3-margin-top"></span> -->
+			<img src="assets/checklist-logo.png" alt="Checklist clipboard logo" class="w3-image w3-margin-top">
+			<p>
+				<strong>The Vanilla JavaScript LocalStorage-based Todo Task Manager!</strong>
+			</p>
+		</div>
+
+		<div class="w3-center" id="about-text">
+			<div class="w3-col w3-container w3-left sa-width-15"></div> <!-- left/right responsive padding -->
+			<div class="w3-col w3-container w3-right sa-width-15"></div>
+			<div class="w3-left-align w3-rest">
+				<p>
+					It seems everyone writes a Todo / Task app when learning Web/HTML/CSS/JavaScript - this is one of
+					those!
+				</p>
+				<p>
+					In fact it's
+					one of three variations of the Todo / Task app. This one uses a Back-End API (written in
+					NodeJS/Express/MongoDB) to save the 'state' -
+					if you log in from anywhere you can access your Tasks. The page's DOM
+					reflects the state saved in the MongoDB database and served up by NodeJS/Express. The Back-End
+					exposes a REST API that the Front-End code accesses.
+				</p>
+				<p>
+					The Back-End API is based on a <a
+						href="https://www.udemy.com/course/the-complete-nodejs-developer-course-2/"
+						target="_blank">NodeJS course</a>, the changes required to enable a Front-End client started from an
+					answer from the <a
+						href="https://www.udemy.com/course/the-complete-nodejs-developer-course-2/learn/lecture/13728912#questions/7784794"
+						target="_blank">Q &amp; A</a> but have been adapted, and the actual Front-End
+					client is based on the LocalStorage version. Hopefully it's useful to someone else.
+				</p>
+				<p>
+					The other versions of the Todo / Task app just manipulate the DOM directly or use browser
+					LocalStorage. In the first the page's DOM stores the current 'state'; the second is similar to this
+					but there is no Back-End, the 'state' is saved in LocalStorage within the browser.
+				</p>
+				<p>
+					I'm less interested in graphic design or fancy web page aesthetics or really much of the whole
+					front-end HTML/CSS than I am
+					interested in the back-end API or general JavaScript. So I just wanted something that looked alright
+					and would work. I picked
+					<a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a> as it's free, simple, and well
+					documented. I just needed
+					to know enough HTML and CSS to modify the pages to work for each variation. Sorry if the page design
+					isn't
+					very exciting.
+				</p>
+			</div>
+		</div>
+
+		<div class="w3-row w3-margin-bottom" id="bottom-padding">
+			<div class="w3-col w3-container sa-height-50px"></div>
+		</div>
+		<div class="w3-content w3-container w3-center w3-theme" id="footer">
+			<p class="w3-tiny">
+				Source code on <a href="https://github.com/sansbacher/todo-task-manager" target="_blank">Github</a>
+			</p>
+			<p class="w3-tiny">
+				Handmade HTML using CSS from <a href="https://www.w3schools.com/w3css/" target="_blank">W3 Schools</a>. W3.CSS is free to use, no license is necessary. Simple and works.
+			</p>
+		</div>
+	</div>
+</body>
+</html>

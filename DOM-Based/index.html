@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/sa-todo-style.css">
+	<title>Todo Task Manager</title>
+</head>
+<body> 
+<div class="w3-content" id="page-container"> <!-- required to centre everything -->
+
+	<div class="w3-bar w3-theme" id="nav-bar">
+		<a class="w3-button w3-bar-item w3-theme-d1 w3-left" href="./">Refresh</a>
+		<a class="w3-button w3-bar-item w3-theme-d1 w3-right" href="./about.html">About</a>
+	</div>
+	<div class="w3-container w3-large w3-center w3-theme-l3" id="header">
+		<h2 class="w3-wide w3-xxlarge sa-font-serif">Todo Task Manager</h2>
+		<p><i>Manage all you have <em>Todo</em>!</i></p>
+	</div>
+	<div class="w3-center" id="instructions"> <!-- Instructions only show when there's no Todo Items -->
+		<!-- <span class="fa fa-list-alt w3-jumbo w3-margin-top"></span> -->
+		<img src="assets/checklist-logo.png" alt="Checklist clipboard logo" class="w3-image w3-margin-top">
+		<p>
+			<strong>Enter anything you need to do, when you're done check it off!</strong>
+		</p>
+	</div>
+
+ 	<form class="w3-container w3-center w3-padding-24" id="input-form">
+		<input type="text" id="input-field" class="sa-width-30" placeholder="Add something todo...">
+		<button type="submit" class="sa-no-focus-outline w3-border-0 w3-theme w3-hover-grey w3-large"><span class="fa fa-plus"></span></button>
+	</form>
+	
+	<div class="w3-row"> <!-- Main Todo List -->
+		<div class="w3-col w3-container w3-left sa-width-15"></div> <!-- left/right responsive padding -->
+		<div class="w3-col w3-container w3-right sa-width-15"></div>
+		<ul class="w3-ul w3-padding-16 w3-rest" id="todo-list">
+			<!-- EXAMPLE Todo Items -->
+			<!-- <li class="w3-container">
+				<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large" checked>
+				<span name="todo-text" data-name="todo-text" class="w3-text-grey sa-text-line-through">This has been competed</span>
+				<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
+				<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
+			</li>
+			<li class="w3-container">
+				<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large">
+				<span name="todo-text" data-name="todo-text">This needs to be done</span>
+				<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
+				<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
+			</li> -->
+		</ul>
+	</div>
+	<div class="w3-row w3-margin-bottom"> <!-- Clear All Button, hidden unless there's todo items -->
+		<div class="w3-col w3-container w3-right sa-width-15"></div>
+		<a class="w3-button w3-right w3-theme w3-rest w3-hide" id="btn-clear-all">Clear All</a>
+	</div>
+	
+	<div class="w3-row w3-margin-bottom" id="bottom-padding">
+		<div class="w3-col w3-container sa-height-50px"></div>
+	</div>
+	<div class="w3-content w3-container w3-center w3-theme" id="footer">
+		<p class="w3-tiny">
+			Source code on <a href="https://github.com/sansbacher/todo-task-manager" target="_blank">Github</a>
+		</p>
+		<p class="w3-tiny">
+			Handmade HTML using CSS from <a href="https://www.w3schools.com/w3css/" target="_blank">W3 Schools</a>. W3.CSS is free to use, no license is necessary. Simple and works.
+		</p>
+	</div>
+</div>
+<script type="text/javascript" src="assets/client-util.js"></script>
+<script type="text/javascript" src="assets/client-app.js"></script>
+</body>
+</html>
