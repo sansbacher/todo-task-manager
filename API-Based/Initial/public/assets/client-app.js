@@ -129,12 +129,11 @@ async function handleLogout(event) {
 	} catch (err) {
 		// We don't really care if it worked or not, but we'll log it all the same.
 		message2.textContent = 'Warning: Unable to fully logout!'
-		message3.textContent = 'You will be returned to the login page in 4 seconds'
 		console.log('Error! Unable to POST logout!');
 		console.log(err)
-		setCookie('auth_token', 'deleted', -1)			// Should be deleted by the API but if it fails we'll remove it
 	}
 	
+	setCookie('auth_token', 'deleted', -1)						// Should be deleted by the API but if it fails we'll remove it
 	setCookie('task_manager_auth_token', 'deleted', -1)			// Our Cookie so we must remove it
 	window.location.href = "login.html"
 }
@@ -226,7 +225,7 @@ async function checkTodo(id) {
 				'Content-Type': 'application/json',
 				Authorization: authToken
 			},
-			body: JSON.stringify(todoItems[index])						// No problem sending all properties even though we're only updating one
+			body: JSON.stringify(todoItems[index], ['completed', 'description'])		// Send only the Properties allowed to be updated
 		})
 		if (response.ok) {
 			todoItems[index] = await response.json()
@@ -283,7 +282,7 @@ async function editTodo(id) {
 					'Content-Type': 'application/json',
 					Authorization: authToken
 				},
-				body: JSON.stringify(todoItems[index])
+				body: JSON.stringify(todoItems[index], ['completed','description'])			// Send only the properties we're allowed to update
 			})
 			if (response.ok) {
 				todoItems[index] = await response.json()

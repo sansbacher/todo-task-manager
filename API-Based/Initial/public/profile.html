@@ -14,7 +14,7 @@
 <script>
 	// Initial script before the page has even loaded:
 	// Check if we're logged in with an auth_token Cookie from the server or our Cookie (doesn't check if token is valid/expired or not)
-	if (!decodeURIComponent(document.cookie).indexOf('auth_token=') < 0 && !decodeURIComponent(document.cookie).indexOf('task_manager_auth_token=') < 0) {
+	if (decodeURIComponent(document.cookie).indexOf('auth_token=') < 0 && decodeURIComponent(document.cookie).indexOf('task_manager_auth_token=') < 0) {
 		window.location.href = "login.html"
 	}
 </script>
@@ -51,11 +51,11 @@
 					<label for="name"><b>Name:</b></label>
 					<input type="text" name="name" id="name-field" class="w3-input w3-border w3-margin-bottom">
 					<label for="email"><b>Email Address:</b></label>
-					<input type="text" name="email" id="email-field" class="w3-input w3-border w3-margin-bottom">
+					<input type="email" name="email" id="email-field" class="w3-input w3-border w3-margin-bottom">
 					<label for="password"><b>Password:</b></label>
 					<input type="password" name="password" class="w3-input w3-border w3-margin-bottom" placeholder="Type a new Password to change it">
 					<label for="age"><b>Age:</b></label>
-					<input type="text" name="age" id="age-field" class="w3-input w3-border" placeholder="Enter your Age (optional)">
+					<input type="number" name="age" id="age-field" class="w3-input w3-border" placeholder="Enter your Age (optional)">
 					<button id="btn-del-profile" class="w3-button w3-theme-l1 w3-section w3-padding w3-left" type="button">Delete Profile</button>
 					<button id="btn-logout-all" class="w3-button w3-theme-l1 w3-section w3-padding w3-margin-left w3-left" type="button">Logout All Sessions</button>
 					<button class="w3-button w3-theme w3-section w3-padding w3-right" type="submit">Save</button>

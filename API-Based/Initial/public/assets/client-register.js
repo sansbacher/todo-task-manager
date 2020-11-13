@@ -18,6 +18,7 @@ async function handleSubmitForm(event) {
 	let result = {message: ''}
 
 	try {
+		console.log(formData)
 		const response = await fetch(apiUrl + '/users', {			// No auth needed to register
 			method: 'POST',
 			headers: {

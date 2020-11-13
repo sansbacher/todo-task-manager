@@ -13,7 +13,7 @@
 <script>
 	// Initial script before the page has even loaded:
 	// Check if we're logged in with an auth_token Cookie from the server or our Cookie (doesn't check if token is valid/expired or not)
-	if (!decodeURIComponent(document.cookie).indexOf('auth_token=') < 0 && !decodeURIComponent(document.cookie).indexOf('task_manager_auth_token=') < 0) {
+	if (decodeURIComponent(document.cookie).indexOf('auth_token=') < 0 && decodeURIComponent(document.cookie).indexOf('task_manager_auth_token=') < 0) {
 		window.location.href = "login.html"
 	}
 </script>

@@ -92,11 +92,11 @@ async function handleLogoutAll(event) {
 		}
 		message1.textContent = 'SUCCESS!'
 		message2.textContent = 'All your Sessions have been logged out'
-		message3.textContent = 'You will be returned to the login page in 4 seconds'
+		message3.textContent = 'You will be returned to the login page in 3 seconds'
 		setCookie('task_manager_auth_token', 'deleted', -1)				// Our Cookie so we must remove it
 		setTimeout( () => {
 			window.location.href = "login.html"
-		}, 4000)
+		}, 3000)
 	} catch (err) {
 		// User can try again perhaps
 		message1.textContent = 'ERROR!'
@@ -122,13 +122,14 @@ async function handleDeleteProfile(event) {
 		if (!response.ok) {
 			throw `Failed to delete Profile! ${response.statusText} - ${response.status}`
 		} 
+		setCookie('task_manager_auth_token', 'deleted', -1)				// Our Cookie so we must remove it
+		setCookie('auth_token', 'deleted', -1)							// Remove just in case
 		message1.textContent = 'SUCCESS!'
 		message2.textContent = 'Your Profile has been deleted'
-		message3.textContent = 'You will be returned to the main page in 4 seconds'
-	
+		message3.textContent = 'You will be returned to the main page in 3 seconds'
 		setTimeout( () => {
 			window.location.href = "login.html"
-		}, 4000)
+		}, 3000)
 	} catch (err) {
 		// User can try again perhaps
 		message1.textContent = 'ERROR!'
