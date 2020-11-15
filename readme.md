@@ -13,7 +13,7 @@ All three are very similar in style and function, and fairly well commented so y
 
 ![Task Manager screen shot](images/screenshot.png)
 
-The style/look is fairly plain (I discovered that I'm much less interested in graphics/web design or learning much CSS so I just used a simple [CSS framework](https://www.w3schools.com/w3css/default.asp) - one that had a decent reference and quick "Try it" buttons). All are Vanilla JavaScript, no JS Frameworks. But I added features like Editing a Task, an Empty State prompt, and logging in/out or editing a Profile (for the API-Based version).
+The style/look is fairly plain (I discovered that I'm much less interested in graphics/web design or learning much CSS so I just used a simple [CSS framework](https://www.w3schools.com/w3css/default.asp) - one that had a decent reference and quick "Try it" buttons). All are Vanilla JavaScript, no JS Frameworks. But I added features like Editing a Task, an Empty State prompt, and logging in/out or editing a Profile (for the API-Based version). And then added a second version with more features.
 
 The HTML/CSS/JavaScript should work in any modern browser, like Chrome, Opera Chromium, Firefox, or Legacy Edge - even Chrome on Android or Safari on iOS. It can't be used with Internet Explorer, but then neither should you.
 

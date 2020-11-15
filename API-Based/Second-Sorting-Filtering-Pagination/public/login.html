@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="assets/w3-theme-nebulas-blue.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/sa-todo-style.css">
+	<title>Login - Todo Task Manager</title>
+</head>
+
+<body>
+	<div class="w3-content" id="page-container">
+		<!-- required to centre everything -->
+
+		<div class="w3-bar w3-theme" id="nav-bar">
+			<a class="w3-button w3-bar-item w3-theme-d1 w3-right" href="about.html">About</a>
+		</div>
+		<div class="w3-container w3-large w3-center w3-theme-l3" id="header">
+			<h2 class="w3-wide w3-xxlarge sa-font-serif">Todo Task Manager</h2>
+			<p><i>Manage all you have <em>Todo</em>!</i></p>
+		</div>
+		<div class="w3-center" id="intro">
+			<span class="fa fa-list-alt w3-jumbo w3-margin-top"></span>
+			<!-- <img src="assets/checklist-logo.png" alt="Checklist clipboard logo" class="w3-image w3-margin-top"> -->
+			<p>
+				<strong>Login to the Vanilla JavaScript API Based Todo Task Manager</strong>
+			</p>
+			<div id="messages">
+				<p id="message-1"></p>
+				<p id="message-2"></p>
+				<p id="message-3"></p>
+			</div>
+		</div>
+		<div class="w3-center" id="login">
+			<div class="w3-col w3-container w3-left sa-width-15"></div> <!-- left/right responsive padding -->
+			<div class="w3-col w3-container w3-right sa-width-15"></div>
+			<div class="w3-left-align w3-rest">
+				<p>If you don't yet have an account you can <a href="register.html">Register here</a>, otherwise please login:</p>
+
+				<form class="w3-container w3-threequarter" id="login-form">
+					<label for="email"><b>Email Address:</b></label>
+					<input type="email" name="email" id="email-field" class="w3-input w3-border w3-margin-bottom" placeholder="Enter Email Address" value="" required>
+					<label for="password"><b>Password:</b></label>
+					<input type="password" name="password" class="w3-input w3-border" placeholder="Enter Password" required>
+					<input class="w3-check w3-margin-top" name="remember" id="remember-checkbox" type="checkbox"> Remember me
+					<button class="w3-button w3-theme w3-section w3-padding w3-right" type="submit">Login</button>
+				</form>
+
+			</div>
+		</div>
+
+		<!-- A quick TEST login, useful while developing/debugging - but need to use express.urlencoded() in the app -->
+		<!-- <div id="testing" class="w3-content w3-card-4 w3-padding w3-twothird">
+			<p><b>TEST Login:</b></p>
+			<form method="POST" action="/users/login">
+				<label for="email">Email</label>
+				<input type="text" name="email" id="email" />
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" />
+				<button>Login</button>
+			</form>
+		</div> -->
+
+		<div class="w3-row w3-margin-bottom" id="bottom-padding">
+			<div class="w3-col w3-container sa-height-25px"></div>
+		</div>
+		<div class="w3-content w3-container w3-center w3-theme" id="footer">
+			<p class="w3-tiny">
+				Source code on <a href="https://github.com/sansbacher/todo-task-manager" target="_blank">Github</a>
+			</p>
+			<p class="w3-tiny">
+				Handmade HTML using CSS from <a href="https://www.w3schools.com/w3css/" target="_blank">W3 Schools</a>. W3.CSS is free to use, no license is necessary. Simple and works.
+			</p>
+		</div>
+	</div>
+<script type="text/javascript" src="assets/client-util.js"></script>
+<script type="text/javascript" src="assets/client-login.js"></script>
+</body>
+</html>

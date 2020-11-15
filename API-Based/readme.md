@@ -8,4 +8,6 @@ This is more or less how a "real" application would work - though obviously a ve
 
 There's an [Initial](https://github.com/sansbacher/todo-task-manager/tree/master/API-Based/Initial) folder because it's all working at this point, and I want to save things as-is, in case future changes take a different turn. **So start there.**
 
+And now there's a [Second-Sorting-Filtering-Pagination](https://github.com/sansbacher/todo-task-manager/tree/master/API-Based/Second-Sorting-Filtering-Pagination) folder that has additional features added - Sorting, Filtering, and Pagination. Setup is the same, just a different "public" folder.
+
 There may be other versions with additional functions/features to come!
