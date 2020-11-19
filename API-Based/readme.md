@@ -10,4 +10,6 @@ There's an [Initial](https://github.com/sansbacher/todo-task-manager/tree/master
 
 And now there's a [Second-Sorting-Filtering-Pagination](https://github.com/sansbacher/todo-task-manager/tree/master/API-Based/Second-Sorting-Filtering-Pagination) folder that has additional features added - Sorting, Filtering, and Pagination. Setup is the same, just a different "public" folder.
 
+There's also a [Third-Profile-Avatar](https://github.com/sansbacher/todo-task-manager/tree/master/API-Based/Third-Profile-Avatar) folder that has added a Profile Picture / Avatar. Setup remains the same, just a new "public" folder.
+
 There may be other versions with additional functions/features to come!
