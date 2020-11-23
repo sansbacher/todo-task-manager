@@ -262,7 +262,8 @@ async function addTodo(text) {
 		if (response.ok) {
 			todo = await response.json()				// The added Task is returned, including _id
 		} else {
-			throw `Failed Adding Task! ${response.statusText} - ${response.status}`
+			const error = await response.json()
+			throw `Failed Adding Task! ${response.statusText} - ${response.status} - ${error.message}`
 		}
 	} catch (err) {
 		message1.textContent = 'ERROR!'
@@ -336,8 +337,8 @@ async function checkTodo(id) {
 		if (response.ok) {
 			todoItems[index] = await response.json()
 		} else {
-			// If we wanted to see OUR API error message we'd need to: await response.json() and use that as it comes in the body. Ie. the: res.status(400).send( {error: 'Invalid updates!'} )
-			throw `Failed Completing Task! ${response.statusText} - ${response.status}`
+			const error = await response.json()
+			throw `Failed Completing Task! ${response.statusText} - ${response.status} - ${error.message}`
 		}
 	} catch (err) {
 		message1.textContent = 'ERROR!'
@@ -360,7 +361,8 @@ async function deleteTodo(id) {
 		if (response.ok) {
 			todo = await response.json()			// The whole Task is returned on successful delete (we could add the .deleted property in the API)
 		} else {
-			throw `Failed Removing Task! ${response.statusText} - ${response.status}`
+			const error = await response.json()
+			throw `Failed Removing Task! ${response.statusText} - ${response.status} - ${error.message}`
 		}
 	} catch (err) {
 		message1.textContent = 'ERROR!'
@@ -393,7 +395,8 @@ async function editTodo(id) {
 			if (response.ok) {
 				todoItems[index] = await response.json()
 			} else {
-				throw `Failed Updating Task! ${response.statusText} - ${response.status}`
+				const error = await response.json()
+				throw `Failed Updating Task! ${response.statusText} - ${response.status} - ${error.message}`
 			}
 		} catch (err) {
 			message1.textContent = 'ERROR!'
@@ -420,7 +423,8 @@ async function getTasks(targetUrl) {
 		if (response.ok) {
 			return await response.json()					// Parse the returned JSON from the returned Body
 		} else {
-			throw `Failed to retrieve existing Task data! ${response.statusText} - ${response.status}`
+			const error = await response.json()
+			throw `Failed to retrieve existing Task data! ${response.statusText} - ${response.status} - ${error.message}`
 		}
 	} catch (err) {
 		message1.textContent = 'ERROR!'

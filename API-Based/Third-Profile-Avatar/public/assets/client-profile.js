@@ -40,7 +40,8 @@ async function handlerDomLoaded() {
 				console.log('Expected 404 - no Avatar picture found')		// Not shown to the user, but browsers log the failed fetch() request...
 			}
 		} else {
-			throw `Failed to retrieve Profile data! ${response.statusText} - ${response.status} for ${response.url}`
+			const error = await response.json()
+			throw `Failed to retrieve Profile data! ${response.statusText} - ${response.status} for ${response.url} - ${error.message}`
 		}
 	} catch (err) {
 		message1.textContent = 'ERROR!'
@@ -79,11 +80,11 @@ async function handleSubmitProfileForm(event) {
 		})
 		result = await response.json()			// The Updated user is returned
 		if (!response.ok) {
-			throw `Failure Updating User Profile! ${response.statusText} - ${response.status}`
+			throw `Failure Updating User Profile! ${response.statusText} - ${response.status} - ${result.message}`
 		}
 	} catch (err) {
 		message1.textContent = 'ERROR!'
-		message2.textContent = err + " " + result.message
+		message2.textContent = err + " " + result.error
 		message3.textContent = "Unable to PATCH User Profile! Check name, email, password, or age and try again!"
 		throw message3.textContent
 	}
@@ -104,7 +105,8 @@ async function handleLogoutAll(event) {
 			headers: { Authorization: authToken }
 		})
 		if (!response.ok) {
-			throw `Failed to logout all Sessions! ${response.statusText} - ${response.status}`
+			const error = await response.json()
+			throw `Failed to logout all Sessions! ${response.statusText} - ${response.status} - ${error.message}`
 		}
 		message1.textContent = 'SUCCESS!'
 		message2.textContent = 'All your Sessions have been logged out'
@@ -136,7 +138,8 @@ async function handleDeleteProfile(event) {
 			headers: { Authorization: authToken }
 		})
 		if (!response.ok) {
-			throw `Failed to delete Profile! ${response.statusText} - ${response.status}`
+			const error = await response.json()
+			throw `Failed to delete Profile! ${response.statusText} - ${response.status} - ${error.message}`
 		} 
 		setCookie('task_manager_auth_token', 'deleted', -1)				// Our Cookie so we must remove it
 		setCookie('auth_token', 'deleted', -1)							// Remove just in case

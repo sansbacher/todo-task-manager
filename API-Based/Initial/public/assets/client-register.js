@@ -18,7 +18,6 @@ async function handleSubmitForm(event) {
 	let result = {message: ''}
 
 	try {
-		console.log(formData)
 		const response = await fetch(apiUrl + '/users', {			// No auth needed to register
 			method: 'POST',
 			headers: {
@@ -26,16 +25,15 @@ async function handleSubmitForm(event) {
 			},
 			body: JSON.stringify(formData)
 		})
-		result = await response.json()			// Newly created user returned in .user, or an error .message
+		result = await response.json()			// Newly created user returned in .user, or an error message
 		if (!response.ok) {
-			console.log(result);
 			throw `Failure creating new User! ${response.statusText} - ${response.status}`
 		} 
 		// The API will set an 'auth_token' Cookie automatically if successful
 	} catch (err) {
 		setCookie('auth_token', 'deleted', -1)			// Delete any existing auth cookies just in case
 		message1.textContent = 'ERROR!'
-		message2.textContent = err + " " + result.message
+		message2.textContent = err + " " + result.error
 		message3.textContent = "Unable to POST new User request! Check name / email / password and try again!"
 		throw message3.textContent
 	}

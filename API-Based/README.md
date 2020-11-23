@@ -12,4 +12,4 @@ And now there's a [Second-Sorting-Filtering-Pagination](https://github.com/sansb
 
 There's also a [Third-Profile-Avatar](https://github.com/sansbacher/todo-task-manager/tree/master/API-Based/Third-Profile-Avatar) folder that has added a Profile Picture / Avatar. Setup remains the same, just a new "public" folder.
 
-There may be other versions with additional functions/features to come!
+There may be other versions with additional functions/features to come. But you can see a live version of the Third version as it stands now [hosted on Heroku here](https://sansbacher-task-manager.herokuapp.com/).

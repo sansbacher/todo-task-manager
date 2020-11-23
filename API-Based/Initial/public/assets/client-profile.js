@@ -67,7 +67,7 @@ async function handleSubmitForm(event) {
 		}
 	} catch (err) {
 		message1.textContent = 'ERROR!'
-		message2.textContent = err + " " + result.message
+		message2.textContent = err + " " + result.error
 		message3.textContent = "Unable to PATCH User Profile! Check name, email, password, or age and try again!"
 		throw message3.textContent
 	}

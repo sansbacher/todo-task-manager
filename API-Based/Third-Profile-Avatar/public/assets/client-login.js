@@ -36,11 +36,10 @@ async function handleSubmitForm(event) {
 			},
 			body: JSON.stringify(formData)			// Only email + password are needed, Any additional 'remember' field is ignored
 		})
-		if (response.ok) {
-			// The API will set an 'auth_token' Cookie automatically
-			result = await response.json()			// The logged in .user is returned
-		} else {
-			throw `Failure logging in! ${response.statusText} - ${response.status}`
+		// The API will set an 'auth_token' Cookie automatically (if successful)
+		result = await response.json()				// The logged in .user is returned (or an error)
+		if (!response.ok) {
+			throw `Failure logging in! ${response.statusText} - ${response.status} - ${result.message}`
 		}
 	} catch (err) {
 		setCookie('auth_token', 'deleted', -1)						// Delete any existing auth cookies just in case
