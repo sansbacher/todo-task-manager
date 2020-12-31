@@ -6,6 +6,6 @@ This is closer to how a "real" application would be written, at least in terms o
 
 You can see a live example of it [here](https://sansbacher-task-manager.herokuapp.com/LocalStorage-Based/).
 
-The [initial](https://sansbacher-task-manager.herokuapp.com/LocalStorage-Based/initial) version is pure JavaScript, no libraries or modules.
+The [initial](https://github.com/sansbacher/todo-task-manager/tree/main/LocalStorage-Based/initial) version is pure JavaScript, no libraries or modules.
 
-There's also a version [using ReefJS](https://sansbacher-task-manager.herokuapp.com/LocalStorage-Based/using-ReefJS), a light-weight reactive library in Vanilla JS (it's the same, but internally handles the data and updating the DOM differently).
+There's also a version [using ReefJS](https://github.com/sansbacher/todo-task-manager/tree/main/LocalStorage-Based/using-ReefJS), a light-weight reactive library in Vanilla JS (it's the same, but internally handles the data and updating the DOM differently).
