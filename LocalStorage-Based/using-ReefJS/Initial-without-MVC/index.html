@@ -38,28 +38,22 @@
 		<div class="w3-col w3-container w3-left sa-width-15"></div> <!-- left/right responsive padding -->
 		<div class="w3-col w3-container w3-right sa-width-15"></div>
 		<div id="todo-list"></div>
-
-			<!-- TEMPLATES for NEW Todo Items, can use any non-script type but 'text/something' allows for syntax highlighting in VSCode -->
-			<!-- For TESTING: <ul class="w3-ul w3-padding-16 w3-rest"> -->
-			<script id="todo-complete-template" type="text/template">
-				<li class="w3-container" id="item-{{id}}">
-					<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large" checked>
-					<span name="todo-text" class="w3-text-grey sa-text-line-through">{{description}}</span>
-					<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
-					<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
-				</li>
-			</script>
-
-			<script id="todo-incomplete-template" type="text/template">
-				<li class="w3-container" id="item-{{id}}">
-					<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large">
-					<span name="todo-text">{{description}}</span>
-					<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
-					<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
-				</li>
-			</script>
-			<!-- TESTING: </ul> -->
-		</div>
+		<!-- EXAMPLE LOOK of Todo Items, without the matching items in the array nothing will "work" -->
+		<!-- <ul class="w3-ul w3-padding-16 w3-rest" id="todo-list-old">
+			<li class="w3-container" id="item-123456789">
+				<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large" checked>
+				<span name="todo-text" class="w3-text-grey sa-text-line-through">This has been competed</span>
+				<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
+				<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
+			</li>
+			<li class="w3-container" id="item-987654321">
+				<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large">
+				<span name="todo-text">This needs to be done</span>
+				<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
+				<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
+			</li>
+		</ul> -->
+	</div>
 	<div class="w3-row w3-margin-bottom"> <!-- Clear All Button, hidden unless there's todo items -->
 		<div class="w3-col w3-container w3-right sa-width-15"></div>
 		<a class="w3-button w3-right w3-theme w3-rest w3-hide" id="btn-clear-all">Clear All</a>

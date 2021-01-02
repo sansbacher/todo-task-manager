@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/sa-todo-style.css">
 	<title>Todo Task Manager</title>
@@ -37,34 +37,53 @@
 	<div class="w3-row"> <!-- Main Todo List -->
 		<div class="w3-col w3-container w3-left sa-width-15"></div> <!-- left/right responsive padding -->
 		<div class="w3-col w3-container w3-right sa-width-15"></div>
-		<div id="todo-list"></div>
-
-			<!-- TEMPLATES for NEW Todo Items, can use any non-script type but 'text/something' allows for syntax highlighting in VSCode -->
-			<!-- For TESTING: <ul class="w3-ul w3-padding-16 w3-rest"> -->
-			<script id="todo-complete-template" type="text/template">
-				<li class="w3-container" id="item-{{id}}">
-					<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large" checked>
-					<span name="todo-text" class="w3-text-grey sa-text-line-through">{{description}}</span>
-					<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
-					<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
-				</li>
-			</script>
-
-			<script id="todo-incomplete-template" type="text/template">
-				<li class="w3-container" id="item-{{id}}">
+		<ul class="w3-ul w3-padding-16 w3-rest" id="todo-list">
+			
+			<!-- TEMPLATE for NEW Todo Items, can use any non-script type but 'text/something' allows for syntax highlighting in VSCode -->
+			<script id="todo-item-template" type="text/template">
+				<li class="w3-container">
 					<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large">
-					<span name="todo-text">{{description}}</span>
+					<span name="todo-text" data-name="todo-text">{{todo}}</span>
 					<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
 					<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
 				</li>
 			</script>
-			<!-- TESTING: </ul> -->
-		</div>
+
+		</ul>
+	</div>
 	<div class="w3-row w3-margin-bottom"> <!-- Clear All Button, hidden unless there's todo items -->
 		<div class="w3-col w3-container w3-right sa-width-15"></div>
 		<a class="w3-button w3-right w3-theme w3-rest w3-hide" id="btn-clear-all">Clear All</a>
 	</div>
-	
+
+	<!-- Edit Todo modal popup, hidden until .style.display='block', Would normally self-close if X'd out or Cancelled,
+	But since there is a Form on the modal with an event listener that needs to be added/removed each time it is displayed
+	the X/Cancel needs to also remove the Handler, so it isn't self-closing. Close handlers added in JS, if wasn't using modules could add an onclick here. -->
+	<div id="edit-todo-modal" class="w3-modal">
+		<div class="w3-modal-content w3-card-4 sa-width-50">
+			<div class="w3-container w3-theme">
+				<!-- Usual self-closing method: <span class="w3-button w3-theme-d1 w3-display-topright" onclick="document.getElementById('edit-todo-modal').style.display='none'"><i class="fa fa-times sa-no-pointer-events"></i></span> -->
+				<span class="w3-button w3-theme-d1 w3-display-topright" id="edit-todo-modal-x"><i class="fa fa-times sa-no-pointer-events"></i></span>
+				<h2>Edit Todo item</h2>
+			</div>
+			<div class="w3-container w3-center w3-margin-bottom w3-margin-top">
+				<div class="w3-col w3-container w3-left sa-width-10"></div> <!-- left/right responsive padding -->
+				<div class="w3-col w3-container w3-right sa-width-10"></div>
+				<div class="w3-left-align w3-rest">
+					<form class="w3-container" id="edit-todo-form">
+						<label for="edit-todo-desc"><b>New Task Description:</b></label>
+						<input type="text" id="edit-todo-desc" class="w3-input w3-border w3-margin-bottom">
+					</form>
+				</div>
+			</div>
+			<div class="w3-container w3-theme">
+				<!-- Usual self-closing method: <span class="w3-button w3-theme-d1 w3-margin-left w3-right" onclick="document.getElementById('edit-todo-modal').style.display='none'">CANCEL</span> -->
+				<span class="w3-button w3-theme-d1 w3-margin-left w3-right" id="edit-todo-modal-cancel">CANCEL</span>
+				<button type="submit" form="edit-todo-form" class="w3-button w3-theme-d1 w3-right">OK</button>
+			</div>
+		</div>
+	</div>
+
 	<div class="w3-row w3-margin-bottom" id="bottom-padding">
 		<div class="w3-col w3-container sa-height-50px"></div>
 	</div>

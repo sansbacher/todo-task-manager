@@ -1,18 +1,24 @@
 // Client-Side Application - LocalStorage Based (state saved in LocalStorage, ie: persists across sessions)
-// Modified to use Modules and Reef, a lightweight reactive framework which updates the DOM when the data updates
+// Modified to use Modules and Reef, a lightweight reactive framework which updates the DOM when the data updates and a Mustache-like Placeholders function
+// using embedded HTML templates (in the HTML file).
 // Further modified to be more of a MVC type app:
 //  The Reef Data Store holds the data Model
 //  The Reef App renders the View of the data
 //  The JS Handler Functions Control when the App renders the Data
 
 // Scripts loaded with type="module" (and all imported modules) are deferred by default and 'use strict'; by default
+import { placeholders } from './modules/utils.js'			// If using local paths (not URLs) must use a web server, not local files
 // https://reefjs.com is: A lightweight library for creating reactive, state-based components and UI.
 import Reef from 'https://cdn.jsdelivr.net/npm/reefjs/dist/reef.es.min.js'			// Web Based
-// import Reef from './modules/reef.es.min.js'										// Local allows VSCode to get Type info (If using local paths (not URLs) must use a web server, not local files)
+// import Reef from './modules/reef.es.min.js'										// Local allows VSCode to get Type info
 
 // Initialization
 const localStorageKey = 'TaskManagerTodoItems'				// LocalStorage is Key:Value pairs, where Value is a String
 const $todoList = document.getElementById('todo-list')		// The main Todo List div element (using $ to signify a DOM element)
+
+// Load Templates from within the HTML
+const todoCompleteTemplate = document.getElementById('todo-complete-template').innerHTML
+const todoIncompleteTemplate = document.getElementById('todo-incomplete-template').innerHTML
 
 // Setup the Reef Data Store, with getters and setters, which make it the Data Model (it manages all access to the data)
 let todoStore = new Reef.Store({							// A Reef data store holds the main array for the todo list
@@ -89,19 +95,13 @@ let todoApp = new Reef($todoList, {					// Can also pass '#todo-list' and Reef w
 			return '';
 		}
 
+		// Generate the List Item HTML for each Todo Item
 		const listItems = props.todoItems.map( (todo) => {
-			let btnChecked = ''
-			let classStrikeThrough = ''
 			if (todo.completed) {
-				btnChecked = 'checked="checked"'
-				classStrikeThrough = 'w3-text-grey sa-text-line-through'
+				return placeholders(todoCompleteTemplate, todo);
+			} else {
+				return placeholders(todoIncompleteTemplate, todo);
 			}
-			return `<li class="w3-container" id="item-${todo.id}">
-				<input type="checkbox" name="btn-check" class="w3-check w3-margin-right w3-padding-small w3-large" ${btnChecked}>
-				<span name="todo-text" class="${classStrikeThrough}">${todo.description}</span>
-				<button name="btn-delete" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-trash-o sa-no-pointer-events"></i></button>
-				<button name="btn-edit" class="w3-right w3-margin-left w3-padding-small sa-no-focus-outline w3-hover-theme w3-border-0 w3-large w3-hover-border-theme"><i class="fa fa-pencil sa-no-pointer-events"></i></button>
-			</li>`;
 		})
 		
 		Reef.emit($todoList, 'todoListShowHide', { emptyTodoList: false })

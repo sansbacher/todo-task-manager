@@ -4,4 +4,6 @@ This is the same as the main LocalStorage Todo Task Manager except that the inte
 
 For a larger application it could be useful to eliminate needing to sort out which elements have changed and when to update just those elements on the page - ReefJS does that automatically.
 
-I used Reef's data Store getters and setters to then separate it into more of a Model-View-Controller (MVC) application, but the original ReefJS (with direct access to the data Store) is still there as `Initial without MVC client-app.js`; it operates the same.
+I used Reef's data Store getters and setters to then separate it into more of a Model-View-Controller (MVC) application and the Placeholders function.
+
+But the original ReefJS (with direct access to the data Store) and without Placeholders is is still there as [Initial-without-MVC](https://github.com/sansbacher/todo-task-manager/tree/main/LocalStorage-Based/using-ReefJS/Initial-without-MVC). It operates the same.
