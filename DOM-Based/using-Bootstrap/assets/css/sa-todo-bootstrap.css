@@ -1,0 +1,79 @@
+html {
+	/* For the Sticky Footer */
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Noto Sans', sans-serif;
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+.navbar-dark {
+	background-color:#345465 ;
+}
+
+ul li .far {
+	pointer-events: none;
+}
+
+p a {
+	color: #6da9c9;
+}
+
+p a:hover {
+	color: #1a8ecc;
+}
+
+.footer a {
+	color: #1a8ecc;
+}
+
+.footer a:hover {
+	color: #6da9c9;
+}
+
+.btn {
+	background-color: #6c98af;
+	border-color: #6c98af;
+}
+
+.btn:hover {
+	background-color: #457087;
+	border-color: #457087;
+}
+
+.completed-todo {
+	text-decoration: line-through;
+	color: #757575;
+}
+
+.jumbotron {
+	font-family: 'Noto Serif', serif;
+	background-color: #bcd1dc;
+}
+
+input[type=checkbox] {
+  	/* Double-sized Checkboxes */
+	 transform: scale(2);
+	/* -ms-transform: scale(2);
+	-moz-transform: scale(2);
+	-webkit-transform: scale(2);
+	-o-transform: scale(2); */
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	padding-top: 0.25rem;
+	
+	color: #d7d7d7;
+	background-color:#345465 ;
+	font-size: 0.75em;
+}
+
+

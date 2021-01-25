@@ -1,15 +1,15 @@
 // Client-Side Application - DOM Based (state saved in the DOM, ie, a refresh kills it)
 // Modified to use Modules, pull the new List Item from an embedded HTML template (in the HTML file) and render with Mustache
-// And now uses a modal dialog box for editing
+// And now uses a modal dialog box for editing. Modified to use Bootstrap 4 CSS and Bootstrap Native JS
 
 // Scripts loaded with type="module" (and all imported modules) are deferred by default and 'use strict'; by default
 import { sanitizeHTML, stripHTML } from './modules/utils.js'		// If using local paths (not URLs) must use a web server, not local files
 import Mustache from 'https://cdn.jsdelivr.net/npm/mustache@4.1.0/mustache.mjs'			// Web hosted version, ES Module type
-// import mustache from './modules/mustache.mjs'										// Local version
+import BSN from 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/3.0.14/bootstrap-native.esm.min.js'
 
 // Initialization
-const $editTodoModal = document.getElementById('edit-todo-modal')						// Using $ to signify a DOM Element
-var handleEditTodo;																		// Will be the Edit Todo modal pop-up Form handler (must persist globally)
+const editTodoModal = new BSN.Modal('#edit-todo-modal')
+var handleEditTodo;																				// Will be the Edit Todo modal pop-up Form handler (must persist globally)
 
 // Load Templates from within the HTML
 const todoItemTemplate = document.getElementById('todo-item-template').innerHTML
@@ -18,11 +18,6 @@ const todoItemTemplate = document.getElementById('todo-item-template').innerHTML
 document.querySelector('#input-form').addEventListener('submit', handleAddNewTodo)				// Submit new Task
 document.querySelector('#todo-list').addEventListener('click', handleTodoListButtonClicks)		// Clicking on Done, Edit, or Delete
 document.querySelector('#btn-clear-all').addEventListener('click', handleClearAll)				// Clear the whole list
-document.addEventListener('click', (event) => {													// Allow clicking anywhere outside the modal popup to close it
-	if (event.target === $editTodoModal) {
-		$editTodoModal.style.display = "none"
-	}
-})
 
 // Event Handlers
 function handleAddNewTodo(event) {
@@ -51,8 +46,8 @@ function handleTodoListButtonClicks(event) {
 
 function handleClearAll(event) {
 	document.querySelector('#todo-list').innerHTML = '';
-	document.querySelector('#btn-clear-all').classList.add('w3-hide')
-	document.querySelector('#instructions').classList.remove('w3-hide')			// The Instructions are only shown if there's NO todo items
+	document.querySelector('#btn-clear-all').classList.add('d-none')
+	document.querySelector('#instructions').classList.remove('d-none')			// The Instructions are only shown if there's NO todo items
 }
 
 // Workflow functions
@@ -63,28 +58,29 @@ function addTodo(todo) {
 
 	// Show/Hide the Clear All button and the Instructions (they end up being mutually exclusive)
 	if ($todoList.children.length > 0) {
-		document.querySelector('#btn-clear-all').classList.remove('w3-hide')
-		document.querySelector('#instructions').classList.add('w3-hide')
+		document.querySelector('#btn-clear-all').classList.remove('d-none')
+		document.querySelector('#instructions').classList.add('d-none')
 	}
 }
 
 function checkTodo(event) {
-	let checkButton = event.target
-	let todoText = checkButton.nextElementSibling		// The todo-text span is the next element from the check button
+	const $parentList = event.target.parentNode.parentNode		// The List Item is the grand-parent of the target that was clicked
+	// Find the child <span> of the List Item with the actual text by name (can't use ID since all the same)
+	const $textSpan = $parentList.querySelector('[data-name=todo-text]')
 
 	// No need to add 'checked' to the button when using plain DOM
-	todoText.classList.toggle('w3-text-grey')
-	todoText.classList.toggle('sa-text-line-through')
+	$textSpan.classList.toggle('completed-todo')
 }
 
 function deleteTodo(event) {
-	let parentList = event.target.parentNode			// Parent of the button clicked is the 'list-item' containing the button
-	parentList.remove()
+	const $parentList = event.target.closest('li')				// Find closest parent List Item of what was clicked
+	$parentList.remove()
 	
-	let todoList = document.querySelector('#todo-list')
-	if (todoList.children.length == 0) {
-		document.querySelector('#btn-clear-all').classList.add('w3-hide')
-		document.querySelector('#instructions').classList.remove('w3-hide')
+	const $todoList = document.querySelector('#todo-list')
+	console.log($todoList);
+	if ($todoList.children.length == 0) {
+		document.querySelector('#btn-clear-all').classList.add('d-none')
+		document.querySelector('#instructions').classList.remove('d-none')
 	}
 	
 }
@@ -94,14 +90,13 @@ function displayEditTodoModal(event) {
 	// Then adds a Submit handler for the modal edit Form (locally as a closure) which actually updates the edited Todo
 	const $editTodoForm = document.getElementById('edit-todo-form')
 	const $editTodoDescField = document.getElementById('edit-todo-desc')
-	const $parentList = event.target.parentNode				// The List Item is the parent of the target that was clicked
+	const $parentList = event.target.closest('li')				// Find closest parent List Item of the thing clicked
 
 	// Find the child <span> of the List Item with the actual text by name (can't use ID since all the same)
-	let $textSpan = $parentList.children['todo-text']		// Works in Chrome, but seems non-standard (span's have no name?)
-	if (!$textSpan) { $textSpan = $parentList.querySelector('[data-name=todo-text]') }		// Works in Edge (more standard?)
+	const $textSpan = $parentList.querySelector('[data-name=todo-text]')		// More standard perhaps, works every
 	
 	$editTodoDescField.value = $textSpan.innerText
-	$editTodoModal.style.display = 'block'				// Display the modal dialogue popup box (the X and Cancel buttons close it)
+	editTodoModal.show()								// Display the modal dialogue popup box (the X and Cancel buttons close it)
 	$editTodoDescField.focus()							// Must set focus after it's displayed
 
 	$editTodoForm.removeEventListener('submit', handleEditTodo)			// Remove any existing Handler in case the user didn't click OK (would cause duplicate Edits)
@@ -116,7 +111,7 @@ function displayEditTodoModal(event) {
 		if (inputValue != '' && inputValue != $textSpan.innerText) {
 			$textSpan.innerText = inputValue
 		}
-		$editTodoModal.style.display = 'none'				// Hide the modal dialogue popup box having clicked OK
+		editTodoModal.hide()						// Hide the modal dialogue popup box having clicked OK (could also use .toggle() )
 	}
 
 	// Add our local Event Handler to actually update the Todo Description, which is automatically removed after being called once
