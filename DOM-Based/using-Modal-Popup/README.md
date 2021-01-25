@@ -6,4 +6,4 @@ This is the same as the main DOM-Based Todo Task Manager except that it is using
 
 A "real" application wouldn't be written this way, but it's quick and simple to experiment and test out a basic idea.
 
-You can see a live example of it [here](https://sansbacher-task-manager.herokuapp.com/DOM-Based/).
+You can see a live example of it [here](https://sansbacher-task-manager.herokuapp.com/DOM-Based-modal/).
