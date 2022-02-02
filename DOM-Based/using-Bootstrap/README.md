@@ -7,3 +7,5 @@ This is the same as the main DOM-Based Todo Task Manager except that it is using
 A "real" application wouldn't be written this way, but it's quick and simple to experiment and test out a basic idea.
 
 You can see a live example of it [here](https://sansbacher-task-manager.herokuapp.com/DOM-Based-Bootstrap/).
+
+There's also a [React Bootstrap based API version](https://github.com/sansbacher/react-todo-app) (from which you can pull the DOM/LocalStorage bits if you want), and you can see it live [here](https://sansbacher-task-manager.herokuapp.com/API-React-Based/).

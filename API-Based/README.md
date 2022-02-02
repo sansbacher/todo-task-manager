@@ -13,3 +13,5 @@ And now there's a [Second-Sorting-Filtering-Pagination](https://github.com/sansb
 There's also a [Third-Profile-Avatar](https://github.com/sansbacher/todo-task-manager/tree/master/API-Based/Third-Profile-Avatar) folder that has added a Profile Picture / Avatar. Setup remains the same, just a new "public" folder.
 
 There may be other versions with additional functions/features to come. But you can see a live version of the Third version as it stands now [hosted on Heroku here](https://sansbacher-task-manager.herokuapp.com/).
+
+To see a version of the Initial Task Manager but in React instead of Vanilla JS see [here](https://github.com/sansbacher/react-todo-app), which you can also try [live](https://sansbacher-task-manager.herokuapp.com/API-React-Based/). However it doesn't have any of the Profile functions or any of the Sorting/Filtering options.

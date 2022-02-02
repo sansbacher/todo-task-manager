@@ -8,6 +8,8 @@ The three versions are:
 2. A version saves the state by being [LocalStorage-Based](https://github.com/sansbacher/todo-task-manager/tree/master/LocalStorage-Based)
 3. And a Front-end for a REST [API-Based](https://github.com/sansbacher/todo-task-manager/tree/master/API-Based) implementation
 
+Bonus #4: There's now a [React API-Based](https://github.com/sansbacher/react-todo-app) version as well, which uses React Bootstrap.
+
 All three are very similar in style and function, and fairly well commented so you can see the progression. There's some variations in separate sub-folders for each.
 
 ![Task Manager screen shot](images/screenshot.png)
@@ -20,5 +22,6 @@ The HTML/CSS/JavaScript should work in any modern browser, like Chrome, Opera Ch
 * Try [DOM-Based](https://sansbacher-task-manager.herokuapp.com/DOM-Based/)
 * Try [LocalStorage-Based](https://sansbacher-task-manager.herokuapp.com/LocalStorage-Based/)
 * Try the latest version of the [Rest API-Based version](https://sansbacher-task-manager.herokuapp.com/) with back-end MongoDB
+* BONUS: Try the [React API-Based version](https://sansbacher-task-manager.herokuapp.com/API-React-Based/) which connects to the same back-end
 
 I hope these are useful for someone!
